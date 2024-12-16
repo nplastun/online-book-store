@@ -5,18 +5,18 @@ import com.example.onlinebookstore.repository.BookRepository;
 import com.example.onlinebookstore.service.BookService;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
-    private final BookRepository bookRepository;
 
-    public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+    private final BookRepository bookRepository;
 
     @Override
     public Book save(Book book) {
-        return bookRepository.save(book);
+        bookRepository.save(book);
+        return book;
     }
 
     @Override
